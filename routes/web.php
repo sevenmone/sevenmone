@@ -16,7 +16,13 @@ Route::get('/hello', function () {
 Route::get('/listings', function () {
     $listings = Listing::all();
 
-    dd(Listing::find(2));
-
     return view('listings.index', ['listings' => $listings]);
+});
+
+// single listing
+
+Route::get('/listings/{id}', function($id) {
+    return view('listings.listing', [
+        'listing' => Listing::find($id)
+    ]);
 });
